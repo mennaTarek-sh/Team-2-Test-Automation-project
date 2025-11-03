@@ -1,0 +1,12 @@
+ID,Title,Precondition,Steps,Expected Result,TestData,Actual Result,Status
+TC 8 ADD product,Verify that user can add a product to the cart from product details page.,User is logged in and on the product details page,"1. Open homepage or product category list
+2. Click on a product (e.g., ID = 7)
+3. Verify product name, price, and description are displayed correctly
+4. Click “Add to Cart”
+5. Confirm success message or handle failure","Confirmation alert appears
+Product is listed in cart with correct name and price
+Product is not added if user is not logged in (if login is required)","Product ID: 7
+Name: Bluetooth Headset
+Price: EGP 350","Alert “Product added successfully” appeared after clicking “Add to Car
+Product name and price matched the catalog details in the cart
+System redirected to login page and product was not added",pass
