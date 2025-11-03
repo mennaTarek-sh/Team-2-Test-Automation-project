@@ -1,0 +1,103 @@
+ID,Title,Preconditions ,test data,Steps ,Expected Result,Actual Result,statues,bug report
+1,enter payment details (valid data),"-add product to cart 
+-payment form is opened ","Name = Ahmed Mohamed
+Country = KSA
+City = Jeddah
+Credit Card = 4111 1111 1111 1111
+Month = 10
+Year = 2026","-open payment form
+-enter all required fields correctly ","""purchase"" button is enabled .","- Fields accepted successfully
+- no error message displayed; - “Purchase” button active.",pass,
+2,enter payment details (missing data),"-add product 
+-payment form is opened ","Name = Ahmed Mohamed
+Country = Egypt
+City = Tanta
+Credit Card = 
+Month = 10
+Year = 2026","- open payment form 
+- Leave the Credit Card field blank.
+-Click “Purchase.”
+","Alert: “Please enter your credit card number.”
+Payment cannot be completed.
+",Alert appeared: “Please enter your credit card number.” Payment not processed.,pass,
+3,enter payment details (missing data),"-add product 
+-payment form is opened ","Name =
+Country = Egypt
+City = Tanta
+Credit Card = 4111 1111 1111 1111
+Month = 10
+Year = 2026","- open payment form 
+- Leave the Name field blank.
+-Click “Purchase.”
+","Alert: “Please enter your name.”
+Payment cannot be completed.
+",Alert appeared: “Please enter your Name.” Payment not processed.,pass,
+4,enter payment details (missing data),"-add product 
+-payment form is opened ","Name = Ahmed mohammed
+Country = Egypt
+City = Tanta
+Credit Card = 4111 1111 1111 1111
+Month = 
+Year = 2026","- open payment form 
+- Leave the Month field blank.
+-Click “Purchase.”
+","System should display an alert:
+“Please enter the expiration month.”
+and block the purchase process.",System completes the purchase and shows “Thank you for your purchase!” message,fail,https://docs.google.com/document/d/1vKPF3n0Wah0wazJIbg5hcmt1U4GLlIRBzvig4Qci-JM/edit?usp=sharing
+5,enter payment details (missing data),"-add product 
+-payment form is opened ","Name = Ahmed mohammed
+Country = Egypt
+City = Tanta
+Credit Card = 4111 1111 1111 1111
+Month = 10
+Year = ","- open payment form 
+- Leave the Year field blank.
+-Click “Purchase.”
+","System should display an alert:
+“Please enter the expiration year.”
+and block the purchase process.",System completes the purchase and shows “Thank you for your purchase!” message,fail,https://docs.google.com/document/d/128FapumgfFV1MklucM8tKIEZEwsfUubq56Le9-hlDG0/edit?usp=sharing
+6,enter payment details (missing data),"-add product 
+-payment form is opened ","Name = Ahmed mohammed
+Country = 
+City = Tanta
+Credit Card = 4111 1111 1111 1111
+Month = 10
+Year = 2025","- open payment form 
+- Leave the Country field blank.
+-Click “Purchase.”
+","System should display an alert:
+“Please enter your country.”
+and block the purchase process.",System completes the purchase and shows “Thank you for your purchase!” message,fail,https://docs.google.com/document/d/1z45uwys1-nuR4h8Il6CYEhiERW3tpmKj9eQeB49yCl0/edit?usp=sharing
+7,enter payment details (missing data),"-add product 
+-payment form is opened ","Name = Ahmed mohammed
+Country = Egypt
+City = 
+Credit Card = 4111 1111 1111 1111
+Month = 10
+Year = 2025","- open payment form 
+- Leave the City field blank.
+-Click “Purchase.”
+","System should display an alert:
+“Please enter your city.”
+and block the purchase process.",System completes the purchase and shows “Thank you for your purchase!” message,fail,https://docs.google.com/document/d/1wlMe0vbCDSH_Z0P83fVHQOfS4lg_AiawJWeI3ULL6uM/edit?usp=sharing
+8,enter payment details (invalid data),"-add product to cart 
+-payment form is opened ","Name = Ahmed mohammed
+Country = Egypt
+City = Tanta
+Credit Card = 1234 5678 1234
+Month = 10
+Year = 2025","- Open the payment form.
+- Enter invalid card number.
+- Check the fields required for entering card detail
+- Click “Purchase","- Alert: “Invalid payment details, please check your input.”
+
+- Payment is not process",,,
+9,Missing CVV Field in Payment Form,"-add product to cart 
+-payment form is opened ","Name = Ahmed mohammed
+Country = Egypt
+City = Tanta
+Credit Card = 4111 1111 1111 1111
+Month = 10
+Year = 2025
+CVV: 123 (Expected field — missing)","- Open the payment form.
+- Check the fields required for entering card details",The payment form should include a CVV field (3-digit code from the back of the card) to ensure secure payment verification.,"There is no CVV field in the payment form, meaning the system does not request the security code.",fail,https://docs.google.com/document/d/1z1Cj7WwDzh5OVki7daVqve35-gOVjvyjg5YuFNnxs24/edit?usp=sharing
