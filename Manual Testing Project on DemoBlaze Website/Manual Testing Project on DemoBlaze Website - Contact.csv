@@ -1,0 +1,31 @@
+id,Title,Precondition,Steps,Test Data,Expected Result,Actual Result,Status,Bug Report
+,Contact with valid data,User is on Contact page,"1. Open Contact Us form
+2. Enter valid Email, Name, Message ≤ 500 chars
+3. Click Send",,Message sent successfully → confirmation shown," ""Thanks for the message""",Pass,
+,Contact with special chars / different languages,,"1. Open form
+2. Enter valid Email, Name with special chars / foreign languages
+3. Enter message with symbols
+4. Click Send","Email: test@email.com Name: منة   Msg: ""Bonjour/ !# ""","Message sent successfully, characters displayed correctly"," ""Thanks for the message""",Pass,
+,Invalid email format,,"1. Open form
+2. Enter invalid Email
+3. Fill Name + Message
+4. Click Send",,"Error: ""Please enter a valid email address"""," ""Thanks for the message"" (no validation)",Fail,https://docs.google.com/document/d/1zRwoI07xdpZN-Imq1rR80AA6D5eiYBO9eJEjAuxm6iA/edit?usp=sharing
+,Empty Name,,"1. Open form
+2. Leave Name empty
+3. Enter valid Email + Message
+4. Click Send",,"Error: ""Name is required"""," ""Thanks for the message""",Fail,https://docs.google.com/document/d/1KRpaC_udcYzemRtIIl4kIFcnt-aIpsnXUBT5mOXZLxg/edit?usp=sharing
+,Empty Message,,"1. Open form
+2. Leave Message empty
+3. Enter valid Email + Name
+4. Click Send",,"Error: ""Message is required"""," ""Thanks for the message""",Fail,https://docs.google.com/document/d/1BYufyl88Fe7kIM6uWwQM9lsrdYkKjUPEqe3po9KUYZo/edit?usp=sharing
+,Message length > 500 chars,,"1. Open form
+2. Enter valid Email + Name
+3. Enter Message > 500 chars
+4. Click Send",,"Error: ""Message cannot exceed 500 characters"""," ""Thanks for the message""",Fail,https://docs.google.com/document/d/1AAbOUoqpOfy-lzlfX_EinzH3o0hz7uuAH9c7Z366Kmw/edit?usp=sharing
+,Empty Email,,"1. Open form
+2. Leave Email empty
+3. Fill Name + Message
+4. Click Send",,"Error: ""Email is required"""," ""Thanks for the message""",Fail,https://docs.google.com/document/d/1jG51U5WLawnNjc4ReSvPBGyK7m_5dRRvTbPgY4gUYqI/edit?usp=sharing
+,Contact Form Validation,,1. Open form                                2. Click “Send message” without filling any fields,,Message should not be sent and validation alert should appear (“Please fill out this field”),Message is sent and “Thanks for the message!!” appears even though fields are empty,Fail,https://docs.google.com/document/d/18IB_W1HrqfaG8gV7IoOiu2B-Sy6gJ2O3h3wVKmjjzgs/edit?usp=sharing
+,"Click ""Send Message"" button twice",User is on Contact page with valid data filled in,"1. Fill all required fields with valid data.
+2. Click ""Send Message"" button twice quickly",,Only one alert appears and the message is sent once only.,"Only one alert appears, message sent once.",Pass,
