@@ -76,7 +76,7 @@ ________________________________________________________________________________
 
 ## 👨‍💻 Contributors
 
- Menna 
- Jasmine 
- Nermeen 
- Asmaa 
+ Menna    |
+ Jasmine  |
+ Nermeen  |
+ Asmaa    |
