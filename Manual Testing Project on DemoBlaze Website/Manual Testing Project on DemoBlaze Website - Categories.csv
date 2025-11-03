@@ -1,0 +1,19 @@
+id,Title,Precondition,Steps,Test Data,Expected Result,Actual Result,Status,Bug Report
+,View Phones category (page 1),User is logged in OR guest,1. Click Phones in Navbar,,Only phone products are displayed on first page, Only phones displayed,Pass,
+,View Laptops category (page 1),User is logged in OR guest,1. Click Laptops in Navbar,,Only laptop products are displayed on first page, Only laptops displayed,Pass,
+,View Monitors category (page 1),User is logged in OR guest,1. Click Monitors in Navbar,,Only monitor products are displayed on first page, Only monitors displayed,Pass,
+,Previous button on page 2 of category,User opened page 2 of Phones/Laptops/Monitors,"1. Go to a category
+2. Navigate to page 2
+3. Click Previous",Phones/Laptops/Monitors,Goes back to previous page of the same category, Returns to main page with all products ,Fail,https://docs.google.com/document/d/1NomuqsEtk8BqtRRSMf9vccaKeKOQnbmth_SqfPh9ZLU/edit?usp=sharing
+,Phones → Next page,User clicked Phones,"1. Click Phones       
+ 2. Navigate with Next",Phones,Should show only phones (page 2), Shows Laptops/Monitors mixed ,Fail,https://docs.google.com/document/d/1A1_iGNdM33_9vuH1FFJoIWSwyGcZdsMLzuua_JiedJ8/edit?usp=sharing
+,Laptops → Next page,User clicked Laptops,"1. Click Laptops      
+ 2. Navigate with Next",Laptops,Should show only laptops (page 2), Shows laptops + monitors mixed,Fail,
+,Monitors → Next page,User clicked Monitors,"1. Click Monitors       
+2. Navigate with Next",Monitors,Should show only monitors (page 2), Shows laptops + monitors mixed ,Fail,
+,Verify category name highlighted after selection,Open Home Page,"1. Click on “Phones”
+2. Observe UI",,The selected category should be highlighted ( visually marked),Category not highlighted (no UI change),Fail,https://docs.google.com/document/d/1wWTyk2Mi6aC9aL1AWMmFhWQhzNGfRh-TWvRiLRlNdpM/edit?usp=sharing
+,"Verify product details (image, name, price) display correctly for selected category",Open Home Page,"1. Click on “Phones”
+2. Observe displayed items",,"Product name, image, and price should display correctly",All products displayed correctly,Pass,
+,Verify “Next” button is disabled or hidden on the last page of category,Open category (Phones/Laptops/Monitors) and navigate to last page,"1. Click “Next” until last page
+2. Observe “Next” button",,“Next” button should be disabled or hidden when on last page,“Next” button not visible on last page,Pass,
