@@ -1,0 +1,6 @@
+id,Title,Precondition,Steps,Test Data,Expected Result,Actual Result,Status,Bug Report
+,Open About Us Modal,User on homepage,1. Click “About Us” from navigation bar,,Modal window should open,Modal opens,Pass,
+,Verify About Us Video,Modal is open,"1. Click “About Us”
+2. Check if video loads correctly",,Video should load and play successfully," Error: ""The media could not be loaded, either because the server or network failed or because the format is not supported.""",Fail,https://docs.google.com/document/d/1OeYjTKRC1ypd_i34GTXGLuS6CSk3Wbxi14MooqXw830/edit?usp=sharing
+,Close Modal via Button,,1. Click Close button inside modal,,Modal should close,Modal closes successfully,Pass,
+,Close Modal by Clicking Outside,,1. Click outside modal area,,Modal should close,Modal closes successfully,Pass,
