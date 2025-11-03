@@ -1,0 +1,22 @@
+id,Title,Precondition,Steps,Test Data,Expected Result,Actual Result,Status
+,Log In with valid username/password,User is on Log In page,"1. Open Log In popup
+2. Enter valid username & password
+3. Click ""Login""",,"User successfully logged in → Navbar shows ""Welcome username""",Works as expected,pass
+,Log In with valid username + wrong password,,"1. Open Log In popup
+2. Enter valid username & wrong password
+3. Click ""Login""",,"Alert: ""Wrong password."""," Alert shows ""Wrong password.""",
+,Log In with non-existing username,,"1. Open Log In popup
+2. Enter non-existing username & any password
+3. Click ""Login""",,"Alert: ""User does not exist."""," Alert shows ""User does not exist.""",
+,Log In with empty fields,,"1. Open Log In popup
+2. Leave username & password empty
+3. Click"" Login""",,"Alert: ""Please fill out Username and Password""","Alert shows ""Please fill out Username and Password""",
+,Both username and password invalid,,"1. Enter wrong username
+2. Enter wrong password
+3. Click on “Login""",,Error message: “User does not exist”,As expected,
+,"Username field empty, password filled",,"1. Leave username empty
+2. Enter password
+3. Click on “Login""",,"Alert: ""Please fill out Username and Password""",As expected,
+,"Password field empty, username filled",,"1. Enter username
+2. Leave password empty
+3. Click on “Login""",,"Alert: ""Please fill out Username and Password""",,
