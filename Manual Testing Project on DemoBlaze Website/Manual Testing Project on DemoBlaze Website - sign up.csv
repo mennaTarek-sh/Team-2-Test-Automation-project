@@ -1,0 +1,32 @@
+id,Title,Precondition,Steps,Test Data,Expected Result,Actual Result,Status,Bug Report
+,Sign Up with valid username & password,User is on Sign Up page,"1. Go to Sign Up page
+2. Enter valid username & password
+3. Click Sign Up",,Account created successfully and alert appears," Alert: ""Sign up successful.""",Pass,
+,Sign Up with empty username,,"1. Go to Sign Up page
+2. Leave username empty, enter valid password
+3. Click Sign Up",,"Error message: ""Please fill out Username and Password"""," Alert: ""Please fill out Username and Password""",Pass,
+,Sign Up with empty password,,"1. Go to Sign Up page
+2. Enter valid username, leave password empty
+3. Click Sign Up",,"Error message: ""Please fill out Username and Password"""," Alert: ""Please fill out Username and Password""",Pass,
+,Sign Up with existing username,,"1. Go to Sign Up page
+2. Enter an already registered username and password
+3. Click Sign Up",,"Error message: ""This user already exists"""," Alert: ""This user already exists.""",Pass,
+,Sign Up with weak/short password,,"1. Go to Sign Up page
+2. Enter valid username and weak password
+3. Click Sign Up",,"Error message: ""Password must be ≥ 8 characters""", DemoBlaze does not validate password length → User created anyway,Fail,https://docs.google.com/document/d/1ciwhwyC6oNDZjpM8n_R16bnWqXvUuUMlA85Ql78PzUY/edit?usp=sharing
+,username with Arabic characters,,"1. Enter Arabic username
+2. Enter valid password
+3. Click Sign Up	","username=منة
+, Password = ""Test@123""",System should accept both English and Arabic usernames,System displays “Sign up successful”,Pass,
+,username with extra long input,,"1. Enter long username (50+ chars)
+2. Click Sign Up","Username = ""Mennaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa""
+,Password = ""Test@123""",System should show alert “Username too long”,System displays “Sign up successful”,Fail,https://docs.google.com/document/d/1V1FNFUOqh2kvSSWfQeAGq_ywjey_c4vCeSgQvd82YHc/edit?usp=sharing
+,Verify password requires at least one uppercase letter,,"1. Enter password without uppercase
+2. Click Sign Up","Username = ""Menna""
+,Password = ""test@123""", System should show alert “Password must include at least one uppercase letter”,System displays “Sign up successful”,Fail,https://docs.google.com/document/d/1Fb5Ir4C-fZIy2Yh1Lko6pFL5O7jF86lkWxcSm2IsBwA/edit?usp=sharing
+,Verify password requires at least one number,,"1. Enter password without numbers
+2. Click Sign Up","Username = ""Menna""
+,Password = ""Test@abc""",System should show alert “Password must include at least one number”,System displays “Sign up successful”,Fail,
+,Verify password requires at least one special character,,"1. Enter password without special character
+2. Click Sign Up","Username = ""Menna""
+, Password = ""Test123""",System should show alert “Password must include at least one special character”,System displays “Sign up successful”,Fail,
