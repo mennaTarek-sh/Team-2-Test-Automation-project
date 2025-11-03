@@ -1,0 +1,25 @@
+Module name ,Checkout,,,,,,,
+feature ,Payment process,,,,,,,
+Tester name ,yasmine ,,,,,,,
+Date,13/10/2025,,,,,,,
+version ,1.0,,,,,,,
+general preconditions,"-user is logged in.
+-user had at least one product in cart 
+- internet cnnection is stable 
+- payment service is available.",,,,,,,
+,,,,,,,,
+,,,,,,,,
+ID,Title,Preconditions ,test data,Steps ,Expected Result,Actual Result,statues,Bug report
+1,Open Payment Form,"- add product to the cart 
+- User is on the cart page 
+",,"- Go to the Cart page.
+- Click the “Place Order” button","- Payment form opens successfully.
+- Fields displayed: Name, Country, City, Credit Card, Month, Year.
+- Message: “Payment form opened successfully.”",Payment form opened as expected; all fields displayed correctly.,pass,
+2,Open Payment Form,user is on the cart page without adding product to the cart ,,"- Go to the Cart page.
+- Click the “Place Order” button","- the system should not allow checkout if cart is empty 
+alert message shouid appear;""your cart is empty . please add items before proceeding to payment .""","- the payment form opened directly even though no items were added to the cart 
+-no validation message appeared .",fail,https://docs.google.com/document/d/1wKrSGl8MfqpC0rFLsBY3vyA0LVFzvGIz30O20NLT1CA/edit?usp=sharing
+3,Open Payment Form,"- add product to the cart 
+- User is on the cart page ",Check the amount displayed in the payment form,"- Go to the Cart page.
+- Click the “Place Order” button",Amount should match the order total and be visible,Amount is correctly displayed at the top of the payment form,pass,
