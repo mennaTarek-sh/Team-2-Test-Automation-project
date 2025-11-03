@@ -1,0 +1,7 @@
+ID,Title,Preconditions ,test data,Steps ,Expected Result,Actual Result,statues
+1,Clear Cart After Purchase (Successful),Purchase completed successfully,Cart previously contained items,"- Complete the payment.
+- Return to the cart page","- Cart is empty.
+- Old products are removed.
+- Message: “Cart cleared successfully.”
+","- User is redirected to the Home page.
+- Cart is empty.",pass
