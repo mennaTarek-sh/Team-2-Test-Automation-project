@@ -1,0 +1,16 @@
+ ID,Test Scenario,Precondition,Steps,Expected Result,Actual Result,Status,Bug Report
+TC7 Product Details,View cart when it contains products, At least one product is already added to the cart  ,"1. Open the website. 
+2. Click on “Add to Cart” for any product
+3. Go to the “Cart” page","Products are displayed with image, name, price, quantity, delete button, and total at the bottom","Product displayed correctly in cart with image, name, price, delete button, and total visible on the side",pass,
+,,,,,,,
+,,,,,,,
+,View cart when it is empty,No products are added to the cart,"1. Open the website
+2.Click on “Add to Cart” for any product.
+3. Go to the “Cart” page.","A message “No items in cart” should appear, and no products or totals should be displayed",Cart opens normally but shows an empty space — no “No items in cart” message displayed,fail,https://docs.google.com/document/d/1OkKPDMLGAW0CL6OYVPk1qflBRVC3XkrC63_VgPEkIWA/edit?usp=sharing
+,,,,,,,
+,,,,,,,
+,Verify total amount is visible and accurate,The cart contains at least one product,"1. Open the website
+2. Click on “Add to Cart” for any produc
+3. Go to the “Cart” paget
+4. Remove a product
+5. Add another product",Total should be clearly visible at the bottom and correctly match (Price × Quantity),Total is visible and matches the correct price calculation,pass,
