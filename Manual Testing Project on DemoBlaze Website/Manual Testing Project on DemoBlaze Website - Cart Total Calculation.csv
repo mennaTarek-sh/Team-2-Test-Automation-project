@@ -1,0 +1,17 @@
+ID,Title,Precondition,Steps,Expected Result,TestData,Actual Result,Status
+TC11,Cart Total Calculation,"User is logged in
+- Cart contains at least one product with price and quantity","1. Open the shopping cart page
+2. Add a product to the cart
+3. Modify the quantity using +/– buttons
+4. Remove a product
+5. Add another product
+","- Total = (Price × Quantity) for each product
+- Total updates instantly after any change
+- Total is displayed clearly at the bottom of the cart page
+","Example:
+- Product A: $10 × 2
+- Product B: $5 × 3
+","Each product’s total was calculated correctly based on its price and quantity
+Total amount updated immediately after increasing, decreasing, or removing items
+Total was shown clearly at the bottom in bold text, easy to read
+",pass
