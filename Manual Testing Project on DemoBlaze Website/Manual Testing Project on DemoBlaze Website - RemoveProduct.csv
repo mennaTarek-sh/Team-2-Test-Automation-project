@@ -1,0 +1,18 @@
+ID,Title,Precondition,Steps,Expected Result,TestData,Actual Result,Status
+TC10 Cart Remove,Remove product from cart,"User is logged in (if required)
+Product ID 10 is already added to cart","1. Go to ""Cart"" page
+2. Locate product with ID = 10
+3. Click on ""Delete"" button next to the product
+4. Observe that the product disappears
+5. Verify that total price is updated
+6. If cart becomes empty, check for ""No items in cart"" message
+","Product is removed from cart
+Total price is recalculated correctly
+""No items in cart"" message appears if cart is empty
+","Product ID: 10
+Product Name: Wireless Mouse
+Price: $15.00
+Quantity: 1","Product disappeared from the cart immediately after deletion
+Total amount updated accurately after product was removed
+Message “No items in cart” appeared clearly at the center of the page
+",pass
