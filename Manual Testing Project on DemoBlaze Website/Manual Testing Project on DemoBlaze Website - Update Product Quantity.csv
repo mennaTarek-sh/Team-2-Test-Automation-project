@@ -1,0 +1,4 @@
+ID,Title,Precondition,Steps,Expected Result,TestData,Actual Result,Status,Bug Report
+TC 9,Verify product quantity in cart,User is logged in and at least one product is already added to the cart,"1. Open the shopping cart page
+2. Click  ""Add to cart""
+3.Click""Add to cart"" again",Quantity of existing Product increases by 1 and total updates.,Any product with quantity ≥ 1,"When clicking""Add to cart"" again,  product added as a new item instead of increasing quantity",fail,https://docs.google.com/document/d/1ame3CKvkJX1YD_SU83CFy0zpdQzRFrSl4ip4k_opFzc/edit?usp=sharing
