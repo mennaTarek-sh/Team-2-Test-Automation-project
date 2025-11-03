@@ -1,0 +1,10 @@
+ID,Title,Preconditions ,test data,Steps ,Expected Result,Actual Result,statues,Bug report
+1,Close Payment Form (Successful),Payment form is open with data entered,,"- Open the payment form.
+- Click the ""Close"" button to close the form ","- Payment form closes.
+- Cart remains unchanged.
+- Message: “Payment form closed successful",Form closed properly and cart stayed the same,pass,
+2,Close Payment Form (Confirmation Required),Payment form is open with data entered,,"- Open the payment form.
+- Click the ""Close"" button to close the form","A confirmation message should appear asking the user:
+“Are you sure you want to close the payment form?”
+If the user clicks ""Yes"" → the form should close.
+If the user clicks ""No"" → the form should remain open.","The payment form closes immediately without showing any confirmation message, which may cause accidental close",fail,https://docs.google.com/document/d/1VmVJHCN3CLDEIJWchPsm-9BgsprjN5S7CKxys2qIVmA/edit?usp=sharing
