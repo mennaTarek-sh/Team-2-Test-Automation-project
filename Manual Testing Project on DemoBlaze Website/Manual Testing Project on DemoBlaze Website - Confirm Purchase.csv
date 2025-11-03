@@ -1,0 +1,6 @@
+ID,Title,Preconditions ,test data,Steps ,Expected Result,Actual Result,statues
+1,Confirm Purchase (Successful),Payment details entered correctly,,"Click the “Purchase” button.
+","- Message displayed: “Thank you for your purchase!”
+- Transaction ID and amount are shown.
+After clicking OK → redirect to home page or empty cart","Confirmation message displayed with Transaction ID. User redirected to homepage.
+",pass
