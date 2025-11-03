@@ -1,0 +1,13 @@
+id,Title,Precondition,Steps,Test Data,Expected Result,Actual Result,Status,Bug Report
+,Log Out after successful login,User is logged in successfully,"1. Log in with valid username & password
+2. Click Log out button in Navbar",,"User logged out → ""Welcome ..."" disappears, Sign up & Log in buttons reappear", Works as expected – buttons reappear,Pass,
+,Try to access Cart after Log Out,"User logged in, then logged out","1. Log in with valid username & password
+2. Log out
+3. Try to open Cart page from Navbar",,System should block access to Cart (redirect to login / show error), Actual: Cart page still opens normally after logout (Security Issue),Fail,https://docs.google.com/document/d/1UKYqBgU831rnK2RGXL6DVpYey-HbFNiDUa3zRqkSBVE/edit?usp=sharing
+,Logout button should appear only after successful login,User not logged in,"1. Open the website
+2. Check navigation bar for “Logout” button",,Logout button should not be visible until the user logs in,Logout button appears only after login,Pass,
+,"After logging out, user should not be able to return to the previous session",User is logged in,"1. Login with valid credentials
+2. Click “Logout”
+3. Press browser back button",Username & Password: valid,User should remain logged out; cannot access previous pages,User stays logged out and redirected to Home,,
+,Logout option should not be available before login,User not logged in,"1. Open website
+2. Check if “Logout” option is displayed anywhere",,Logout option should not appear before login,Logout option not displayed before login,,
