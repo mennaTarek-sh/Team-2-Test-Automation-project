@@ -74,6 +74,7 @@ Bug Reports Sheet
 Screenshots Folder
 
 Link to Google Sheet is also included in repo description
+https://docs.google.com/spreadsheets/d/1M5OPdqDelTm5EHiNkRjBHhzWk4TBnjD2H6EV_lqESi8/edit?usp=sharing
 ______________________________________________________________________________________________________________
 👤 Tester
 
