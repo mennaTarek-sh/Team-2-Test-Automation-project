@@ -5,30 +5,12 @@ SauceDemo Automation Project
 This project is a full automation suite for the SauceDemo
  website using Java, Selenium WebDriver, and Maven.
 It tests key functionalities like login, add to cart, checkout flows, sorting, footer links, and form submissions.
-__________________________________________________________________________________________________________________________________
-🗂 Project Structure
-AutomationProject/
-├── src/
-│   ├── main/java/
-│   │   └── org/example/
-│   │       └── Main.java
-│   └── test/java/
-│       ├── AddtoCartModule.java
-│       ├── AboutModule.java
-│       ├── CheckoutModule.java
-│       ├── FooterModule.java
-│       ├── FullSiteTestModule.java
-│       ├── LoginModule.java
-│       ├── LogoutModule.java
-│       ├── RemoveModule.java
-│       ├── ResetAppStateModule.java
-│       └── SortBoxModule.java
-├── pom.xml
-└── .gitignore
+______
 ______________________________________________________________________________________________________________________________
 🔹 Modules Description
 1. LoginModule
 Handles login to SauceDemo using standard user credentials.
+
 
 2. AddtoCartModule
 
