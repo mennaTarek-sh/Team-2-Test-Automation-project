@@ -5,7 +5,6 @@ SauceDemo Automation Project
 This project is a full automation suite for the SauceDemo
  website using Java, Selenium WebDriver, and Maven.
 It tests key functionalities like login, add to cart, checkout flows, sorting, footer links, and form submissions.
-______
 ______________________________________________________________________________________________________________________________
 🔹 Modules Description
 1. LoginModule
