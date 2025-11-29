@@ -1,0 +1,47 @@
+Id,API Name,EndPoints,Method,Test Steps,Expected result,Actual result,Status Code,Bug Report
+1#, Products ,/products/?price=100,Get,"1. Open Postman
+2. Method = GET
+3. URL =https://api.escuelajs.co/api/v1/products/?price=100
+4. Click Send",Array of products with price exactly 100,As Expected,200,
+2#,,/products/?price=0,,"1. Open Postman
+2. Method = GET
+3. URL =https://api.escuelajs.co/api/v1/products/?price=0
+4. Click Send",Array of products with price exactly 0,"200 Ok
+List of All products ",200,https://docs.google.com/document/d/135J7Zf__54ToMUYpMD2cmQiDxIRJKEfQQ7aqatyTaL8/edit?usp=sharing
+3#,,/products/?price= -50,,"1. Open Postman
+2. Method = GET
+3. URL =https://api.escuelajs.co/api/v1/products/?price=-50
+4. Click Send","400 Bad Request 
+ price must be positive", empty array,200,https://docs.google.com/document/d/13FvOq3rDIXLxKXqFHkKmjKrU0-3iJiAB2HGQsJhz5QY/edit?usp=sharing
+4#,,/products/?price=abc,,"1. Open Postman
+2. Method = GET
+3. URL =https://api.escuelajs.co/api/v1/products/?price=abc
+4. Click Send","400 Bad Request
+Error message ",Array of products ,200,https://docs.google.com/document/d/19JgcfY2AmtJjingM9Ub7eF5coJLYh8MyQfhUmlAXWXI/edit?usp=sharing
+5#,,/products/?price=999999,,"1. Open Postman
+2. Method = GET
+3. URL =https://api.escuelajs.co/api/v1/products/?price=999999
+4. Click Send",empty array,As Expected,200,
+6#,,/products/,,"1. Open Postman
+2. Method = GET
+3. URL =https://api.escuelajs.co/api/v1/products/
+4. Click Send",All products returned or default behavior,All products returned,200,
+,,/products/?price=100;DROP TABLE products;--,,"1. Open Postman
+2. Method = GET
+3. URL = /products/?price=100;DROP TABLE products;--
+4. Click Send","400 Bad Request, no crash","200 OK
+returns all products (filter ignored)","200 Ok
+(FAIL)",https://docs.google.com/document/d/1w165wpuAPiUYisN3oASRmplltLag72dTve5u_Klgzmo/edit?usp=sharing
+,,/products/?price=100,,"1. Open Postman
+2. Method = GET
+3. URL = /products/?price=100
+4. Header: Content-Type = text/plain
+5. Click Send","200 OK
+ body ignored",As Expected,"200 Ok
+(PASS)",
+,,/products/?price=50,POST,"1. Open Postman
+2. Method =POST
+3. URL = /products/?price=100
+4. Click Send","""Status Code"": 405 Method Not Allowed","""statusCode"": 500,
+    ""message"": ""Internal server error""","500 Internal Server Error
+(FAIL)",https://docs.google.com/document/d/1antavBL2i6tBhElkhVpWg5KNAkpBH82rrXgKRB_E1D8/edit?usp=sharing
