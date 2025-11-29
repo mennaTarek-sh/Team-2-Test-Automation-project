@@ -1,1 +1,78 @@
+FakeAPI REST API Testing Project
+____________________________________________________________________________________________________________________________________________________________________
+📌 Project Overview
 
+This project is a comprehensive API testing suite for Fake Store API using Postman and structured Test Cases documentation. It covers key endpoints including Products, Categories, and Users, validating responses, error handling, input validations, and security checks like SQL Injection.
+___________________________________________________________________________________________________________________________________________________________
+🔹 Modules Description
+Products Module
+
+Tests product retrieval endpoints.
+
+Filters by Title, Price, and Category.
+
+Covers positive and negative test cases including non-existing data, invalid inputs, long strings, and SQL Injection attempts.
+
+Verifies proper status codes and response structure.
+
+Categories Module
+
+Tests retrieval of categories by slug and deletion by ID.
+
+Validates input handling, missing or malformed data, and proper response codes.
+
+Checks robustness against SQL Injection and invalid Content-Type headers.
+
+Users Module
+
+Tests user creation and retrieval endpoints.
+
+Covers scenarios for valid users, unknown IDs, invalid ID formats, and injection attempts.
+
+Verifies proper error handling and response structure.
+
+Security & Edge Cases
+
+Ensures the API properly validates inputs (numeric fields, URLs, mandatory fields).
+
+Tests for SQL Injection and malformed requests.
+
+Confirms behavior when headers or body content are unexpected or missing.
+___________________________________________________________________________________________________________________________________________________
+ Dependencies
+
+Postman for API testing.
+
+JSON for request and response bodies.
+
+Optional: Newman for running tests via CLI.
+
+Documentation maintained in Google Sheets / Markdown tables.
+___________________________________________________________________________________________________________________________________________
+Notes
+
+Each test case documents:
+
+Endpoint
+
+HTTP method
+
+Steps to reproduce
+
+Expected result
+
+Actual result
+
+Status code
+
+Bug report (if applicable)
+
+Tests include both positive and negative scenarios.
+
+Ensure API URL ({{API_URL}}) is correctly set in Postman environment variables.
+
+Test data (IDs, titles, slugs) can be updated as needed for realistic testing.
+
+👩‍💻 Author
+
+Menna Allah Tarek | Jasmine Marey |  Nermeen Mohammed |  Asmaa Shahin
