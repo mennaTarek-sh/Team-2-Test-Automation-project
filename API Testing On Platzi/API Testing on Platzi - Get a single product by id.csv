@@ -1,0 +1,75 @@
+Id,API Name,EndPoints,Method,Test Steps,Expected result,Actual result,Status Code,Bug Report
+,Products,/products/{id},GET,"1-Open Postman
+2.-Set Method GET
+3- Enter endpoint /products/119
+4- Click Send
+5- Observe status code, response body, header","Status: 200 OK
+ Response body contains the product with correct fields 
+ headers validate",As Expected,"200 OK
+(PASS)",
+,,,,"1-Open Postman
+2- Set Method GET
+3- Enter endpoint /products/99
+4- Click Send
+5- Observe status code, message","Status 404 
+""message"" :Product not found","400 Bad Request
+""message"": ""Could not find any entity of type \""Product\"" matching: {\n    \""relations\"": [\n        \""category\""\n    ],\n    \""where\"": {\n        \""id\"": 99\n    }\n}""","400 Bad Request
+(FAIL)",https://docs.google.com/document/d/1OQqQR2m6S3jEFP-hguseVj5CbMDTWBDckcn_lCsNfDk/edit?usp=sharing
+,,,POST,"1-Open Postman
+2- Set Method POST
+3- Enter endpoint /products/33
+4- Click Send
+5- Observe status cod","Status 405 
+"" message "" :Method Not Allowed ","""statusCode"": 404
+""error"": ""Not Found"",
+""message"": ""Cannot POST /api/v1/products/33"",","404 Not Found
+(FAIL)",https://docs.google.com/document/d/1c_2KiwjsdGbUG0vjGz7aaZZGY7I7-GP3To0joeXbnYc/edit?usp=sharing
+,,,GET,"1- Open Postman
+2- Set Method GET
+3- Enter endpoint /products/245
+4- Click Send
+5- Observe response headers","- Access-Control-Allow-Origin = *
+- Content-Type = application/json; charset=utf-8
+- Strict-Transport-Security present
+- X-Content-Type-Options = nosniff
+- X-Frame-Options = SAMEORIGIN
+- Content-Security-Policy present
+- Cross-Origin-Opener-Policy = same-origin
+- Cross-Origin-Resource-Policy = same-origin",As Expected,"200 OK
+(PASS)",
+,,,,"1-Open Postman
+2- Set Method GET
+3- Enter endpoint /products/245
+4- Click Send
+5- Verify product has all required fields with correct type","id, title, slug, price, description, category (id, name, slug, image, creationAt, updatedAt), images, creationAt, updatedAt",As Expected,"200 OK
+(PASS)",
+,,,,"1-Open Postman
+2-Set Method = GET
+3-Endpoint = /api/v1/products/ ← ID empty
+4-Click Send
+5-Observe the respons","Status Code = 400 Bad Request  OR
+ 404 Not Found
+ ""message"": ""Product ID is required"" OR
+ error  API","200 OK
+Request successful. 
+The server has responded as required.","200 OK
+(FAIL)",https://docs.google.com/document/d/1v19yw-UuGsNxDsSTt4PKOpTzNT2864ccf9pvVb-tIhE/edit?usp=sharing
+,,,,"1-Open Postman
+2-Set Method = GET
+3-Enter endpoint: /api/v1/products/ 
+with non-numeric ID (e.g., Arabic number ٤)
+4-Click Send
+Observe the response","""statusCode"": 400
+""error"": ""Bad Request"",
+""message"": ""Validation failed
+ (numeric string is expected)""
+   
+    ",As Expected,"400 Bad Request
+(PASS)",
+,,,,"1. Open Postman
+2. Set Method = GET
+3. Enter endpoint /api/v1/products/-5
+4. Click Sen","""StatusCode"": 400 Bad Request
+The server could not understand the request. 
+Maybe a bad syntax?",As Expected,"400 Bad Request
+(PASS)",
