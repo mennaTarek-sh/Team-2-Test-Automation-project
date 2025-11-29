@@ -1,0 +1,81 @@
+Id,API Name,EndPoints,Method,Test Steps,Expected result,Actual result,Status Code,Bug Report
+,"
+
+Auth",/auth/login,POST,"1. Open Postman
+2. Set Method = POST
+3. Enter URL /auth/login
+4. Body → raw → JSON:
+{ ""email"": ""john@mail.com"", ""password"": ""changeme"" }
+5. Click Send","201 Created
+Response contains access_token & refresh_token",As Expected,"201 Created
+(PASS)",
+,,,,Same as above but with wrong password,"  ""statusCode"": 401
+""Message"":Unauthorized
+ Invalid credentials",As Expected,"401 Unauthorized
+(PASS)",
+,,,,Same as above but with unregistered email,"  ""statusCode"": 401
+""Message"":Unauthorized
+ Invalid credentials",As Expected,"401 Unauthorized
+(PASS)",
+,,,,"Body missing password: { ""email"": ""john@mail.com
+"" }","400 Bad Request 
+ ""password is required""","  ""statusCode"": 401
+""Message"":Unauthorized""","401 Unauthorized
+(FAIL)",https://docs.google.com/document/d/1DeZuLgCtw_jiPI88rsZ2ZiekHZfgZSmRFgcQl4m5iVQ/edit?usp=sharing
+,,,,"Body missing email: { ""password"": ""changeme"" }","400 Bad Request
+""email is required""","  ""statusCode"": 401
+""Message"":Unauthorized""","401 Unauthorized
+(FAIL)",https://docs.google.com/document/d/14dt1xsK2UVDgduKIOirdYLXT18LR0GPfSs15BiXOeI4/edit?usp=sharing
+,,,,"Body with empty values: { ""email"": """", ""password"": """" }","400 Bad Request – ""email must not be empty"", ""password must not be empty"""," ""statusCode"": 401
+""Message"":Unauthorized""","401 Unauthorized
+(FAIL)",https://docs.google.com/document/d/1hblJuhOwejCxnqs86do2yYAv6yqIFmehnYVaQr4Ppy8/edit?usp=sharing
+,,,,"Body with invalid email: { ""email"": ""invalid@mail"", ""password"": ""changeme"" }",400 Bad Request – Invalid email format," ""statusCode"": 401
+""Message"":Unauthorized""","401 Unauthorized
+(FAIL)",https://docs.google.com/document/d/141li6GLYxWzIxXMENrXS-6yb3oNBjHtY9z4qyK3tWdM/edit?usp=sharing
+,,,,"Body with SQL injection: { ""email"": ""admin@mail.com
+ --"", ""password"": ""123456""}",401 Unauthorized  – no server crash,As Expected,"401 Unauthorized
+(PASS)",
+,,,,"Body malformed JSON: { ""email"": ""test"", ""password"": 123456 (missing quotes) }",400 Bad Request – invalid JSON," ""statusCode"": 401
+""Message"":Unauthorized""","401 Unauthorized
+(FAIL)",https://docs.google.com/document/d/10W4kuK8hcFnEW14q1XjHsZ-G6TCsliG2OEn89F851OA/edit?usp=sharing
+,,,GET,Send GET /auth/login,405 Method Not Allowed – only POST allowed,"
+""statusCode"": 404   
+  ""error"": ""Not Found"",
+ ""message"": ""Cannot GET /api/v1/auth/login""
+  
+    
+","404 Not Found
+(FAIL)",https://docs.google.com/document/d/1pv1zdpLYVGTQFbJgvMgfmjqT--52F0B1Zbt8GkCxPhc/edit?usp=sharing
+,,,POST,"Body with extra fields: { ""email"": ""john@mail.com
+"", ""password"": ""changeme"", ""role"": ""admin""}","201 Created 
+ extra fields ignored",As Expected,"201 Created
+(PASS)",
+,,,,"Body with case-different email: { ""email"": ""JOHN@mail.com
+"", ""password"": ""changeme""}","201 Created 
+case insensitive"," ""statusCode"": 401
+""message"": ""Unauthorized""
+   
+","401 Unauthorized
+(FAIL)",https://docs.google.com/document/d/1b2V4xsddeTnVmqbuXvHe0KqsKTu5zDbT2g9vdiSk7cw/edit?usp=sharing
+,,,,Empty body: {},"400 Bad Request – ""email required"", ""password required"""," ""statusCode"": 401
+""message"": ""Unauthorized""
+   ","401 Unauthorized
+(FAIL)",https://docs.google.com/document/d/1vUcLpBk59wtLeSWPEMJjn8aj3wCbUFtl7L9B9jnR_0A/edit?usp=sharing
+,,,,"Wrong Content-Type (text/plain).
+This means you will send a Body in a format other than JSON, while the API is expected to be Content-Type: application/json.","The server rejects the request and returns:
+
+415 Unsupported Media Type or
+
+400 Bad Request with a message indicating that the Content-Type is incorrect."," ""statusCode"": 401
+""message"": ""Unauthorized""","401 Unauthorized
+(FAIL)",https://docs.google.com/document/d/1LQ5_8b5hTs0dRTxwcLipSIYk9Ig4WMz0Mq3IwtXKJPE/edit?usp=sharing
+,,,,Very long email(boundary testing),400 Bad Request – validation error," ""statusCode"": 401
+""message"": ""Unauthorized""","401 Unauthorized
+(FAIL)",https://docs.google.com/document/d/1DDJ5xzFShp27VwxGtmwBgl60h2jSW_OjGafmS2Z5Ec8/edit?usp=sharing
+,,,,Very long password (boundary testing),400 Bad Request – validation error," ""statusCode"": 401
+""message"": ""Unauthorized""","401 Unauthorized
+(FAIL)",https://docs.google.com/document/d/1aIDzv8qX0uvO9iPre3n3Kt3YwFcRKH_iZVZZgU1R4WU/edit?usp=sharing
+,,,,Send valid refresh token to get new access token,"201 Created
+ new access token returned
+",As Expected,"201 Created
+(PASS)",
