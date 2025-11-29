@@ -1,0 +1,50 @@
+Id,API Name,EndPoints,Method,Test Steps,Expected result,Actual result,Status Code,Bug Report
+,	Categories,/slug/{{slug}},GET,"1.Open Postman
+2.Method = GET
+3.URL → /categories/slug/{{slug}}
+4.Send","""Status Code"": 200 OK
+Request successful. The server has responded as required.",As Expected,"200 Ok
+(PASS)",
+,,,,GET /categories/xyz-not-exist,"""Status Code"": 404 Not Found
+Message: ""Category not found""","400 Bad Request
+""message"": ""Could not find any entity of type","400 Bad Request
+(FAIL)",https://docs.google.com/document/d/1IBAraMtijH1Uic1iErYsMkIvPddCNsjIsW_fOw-yhCY/edit?usp=sharing
+,,,,GET /categories/ELECTRONICS,"""Status Code"": 200 OK
+Should still return category","400 Bad Request
+""message"": ""Could not find any entity of type","400 Bad Request
+(FAIL)",https://docs.google.com/document/d/1TIHYh8jyee1CU9fEPXNPxUB4v9RwPipN5eHE98L1Nig/edit?usp=sharing
+,,,,GET /categories/electronics!!,"""Status Code"": 400 Bad Request",As Expected,"400 Bad Request
+(PASS)",
+,,,,"GET /categories/
+(Meaning: slug is incomplete)","""Status Code"": 404 Not Found
+“Route not found”
+"," 200 Ok 
+Request successful. The server has responded as required."," 200 Ok 
+(FAIL)",https://docs.google.com/document/d/15JVQrrbQyR8EvO29QA07D7aMhBwvYLdL7zd4IblT3E8/edit?usp=sharing
+,,,,GET /categories/aaaaaaaaaaaa…..(300 characters),"""Status Code"": 400 Bad Request ",As Expected,"400 Bad Request
+(PASS)",
+,,,POST,POST /categories/electronics,"""Status Code"": 405 Method Not Allowed","  ""statusCode"": 404
+   ""error"": ""Not Found"",
+""message"": ""Cannot POST /api/v1/categories/slug/electronics""
+ 
+   ","404 Not Found
+(FAIL)",https://docs.google.com/document/d/1d7bW9SKDYQfYIxolVm-vh0g89gpKwC8R4VIOu0x0aC4/edit?usp=sharing
+,,,GET,"GET /categories/electronics'; DROP TABLE users;--
+
+An SQL Injection attack... means we send a slug containing malicious code that mimics a database attack, for example:","""Status Code"": 400 Bad Request",As Expected,"400 Bad Request
+(PASS)",
+,,,,Schema Validation,"200 OK + JSON must contain required fields:
+id, name, slug, image, creationAt, updatedAt",As Expected,"200 Ok 
+(PASS)",
+,,/categories/%20%20,,Slug = encoded spaces,400 Bad Request," ""statusCode"": 404
+  ""error"": ""Not Found"",
+""message"": ""Cannot GET /api/v1//categories/%20%20""","404 Not Found
+(FAIL",https://docs.google.com/document/d/1vzWht0HfD00_Cp8iLgqQ0kwHlZCxrB4-Edym3ne8hcQ/edit?usp=sharing
+,,/categories/slug/{{slug}} + Wrong Accept Header,,Set Header: Accept = text/html,"406 Not Acceptable
+
+Because the API does not support HTML and only accepts application/json","   ""statusCode"": 404
+    ""error"": ""Not Found"",
+""message"": ""Cannot GET /api/v1//categories/slug/electronics""
+
+  ","404 Not Found
+(FAIL)",https://docs.google.com/document/d/1-SKsMtGTwPv9bXoUyNCgZQXLy5Ogg8WVTjVCAlRlr2E/edit?usp=sharing
