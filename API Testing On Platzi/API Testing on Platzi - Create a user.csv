@@ -1,0 +1,408 @@
+ID,API Name,Endpoint,Method,test name,Test Steps,Expected Result,Actual Result,Status Code,Bug Report
+TC01,Create User,/api/v1/users,POST,Valid Create User,"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""sara test"",
+  ""email"": ""sara.test@test.com"",
+  ""password"": ""123456"",
+  ""avatar"": ""https://i.pravatar.cc/200""
+}
+",201 created,201 created,201 pass,
+TC02,,,,Send unique email + strong password,"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""Strong User"",
+  ""email"": ""strong.user.1@test.com"",
+  ""password"": ""StrongPass123"",
+  ""avatar"": ""https://i.pravatar.cc/210""
+}
+
+
+",201 created ,201 created ,201 pass,
+TC03,,,,Send valid avatar URL,"""1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the """"Body"""" tab below the URL bar and select """"Raw"""".
+6.Enter the following JSON body in the Body section:
+{
+  """"name"""": """"sara test"""",
+  """"email"""": """"sara.test@test.com"""",
+  """"password"""": """"123456"""",
+  """"avatar"""": """"https://i.pravatar.cc/200""""
+}
+""",201 created ,201created,201 pass,
+TC04,,,,Send password with only 4 digits,"""1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the """"Body"""" tab below the URL bar and select """"Raw"""".
+6.Enter the following JSON body in the Body section:
+{
+  """"name"""": """"sara test"""",
+  """"email"""": """"sara.test@test.com"""",
+  """"password"""": """"1234"""",
+  """"avatar"""": """"https://i.pravatar.cc/200""""
+}
+""",201 created,201 created ,201 pass,
+TC05,,,,"Add ""role =admin"" inside request body","1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""sara test"",
+  ""email"": ""sara.test@test.com"",
+  ""password"": ""123456"",
+  ""avatar"": ""https://i.pravatar.cc/200""
+  ""role"": ""admin""
+
+}
+",201 created,201 created,201 pass,
+TC06,,,,Send request without email,"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""sara test"",
+  ""password"": ""123456"",
+  ""avatar"": ""https://i.pravatar.cc/200""
+}
+","400 Bad Request – ""email is required""","message"": [
+        ""email should not be empty"",
+        ""email must be an email""",400 pass,
+TC07,,,,Send invalid email format (no @),"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""sara test"",
+  ""email"": ""sara.test.test.com"",
+  ""password"": ""123456"",
+  ""avatar"": ""https://i.pravatar.cc/200""
+}
+","400 Bad Request – ""email is required""","""message"": [
+        ""email must be an email""
+    ],",400 pass,
+TC08,,,,"Send empty email ("""")","""1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the """"Body"""" tab below the URL bar and select """"Raw"""".
+6.Enter the following JSON body in the Body section:
+{
+  """"name"""": """"sara test"""",
+  """"email"""": """""""",
+  """"password"""": """"123456"""",
+  ""avatar"""": """"https://i.pravatar.cc/200""}
+""","400 Bad Request – ""email is required""","message"": [
+        ""email should not be empty"",
+        ""email must be an email""",400 pass,
+TC09,,,,Send request without password,"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""sara test"",
+  ""email"": ""sara.test@test.com"",
+  ""avatar"": ""https://i.pravatar.cc/200""
+}
+","400 Bad Request – ""password is required""","""message"": [
+        ""password must be longer than or equal to 4 characters"",
+        ""password should not be empty"",
+        ""password must contain only letters and numbers""
+    ],",400 pass,
+TC10,,,,Send very weak password (“1”),"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""sara test"",
+  ""email"": ""sara.test@test.com"",
+  ""password"": ""1"",
+  ""avatar"": ""https://i.pravatar.cc/200""
+}
+","400 Bad Request – ""password must be longer than or equal to 4 characters""","
+    ""message"": [
+        ""password must be longer than or equal to 4 characters""
+    ],",400 pass,
+TC11,,,,Send empty password (“”),"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""sara test"",
+  ""email"": ""sara.test@test.com"",
+  ""password"": """",
+  ""avatar"": ""https://i.pravatar.cc/200""
+}
+","400 Bad Request – ""password is required""","""""""message"""": [
+        """"password must be longer than or equal to 4 characters"""",
+        """"password should not be empty"""",
+        """"password must contain only letters and numbers""""
+    ],""",400 pass,
+TC12,,,,Send request without name ,"""1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the """"Body"""" tab below the URL bar and select """"Raw"""".
+6.Enter the following JSON body in the Body section:
+{
+  
+  """"email"""": """"sara.test@test.com"""",
+  """"password"""": """"123456"""",
+  """"avatar"""": """"https://i.pravatar.cc/200""""
+}
+""","400 Bad Request – ""name is required""","""statusCode"": 500,
+    ""message"": ""Internal server error""",500 fail,https://docs.google.com/document/d/1Is-6tolU93w6qKwBRFb9OHJQLvcatDHBIcsrWBHCMzw/edit?usp=sharing
+TC13,,,,Send extremely long name (50–100 chars),"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"",
+  ""email"": ""longname@test.com"",
+  ""password"": ""123456"",
+  ""avatar"": ""https://i.pravatar.cc/290""
+}
+","400 Bad Request
+""name too long""",202 created,201 FAIL,https://docs.google.com/document/d/1P2WGuYEfnKobgJkbednKZdDNwmBFFysJE9AfLCmJ3lM/edit?usp=sharing
+TC14,,,,Send request without avatar,"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""sara test"",
+  ""email"": ""sara.test@test.com"",
+  ""password"": ""123456"",
+  
+}
+","400 Bad Request – ""avatar is required""","""message"": [
+        ""avatar should not be empty"",
+        ""avatar must be a URL address""
+    ],",400 pass,
+TC15,,,,"Invalid avatar string (""notAURL"")","1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""sara test"",
+  ""email"": ""sara.test@test.com"",
+  ""password"": ""123456"",
+  ""avatar"": ""noavatar URL""
+}
+","400 Bad Request – ""avatar must be a URL""","""message"": [
+        ""avatar must be a URL address""
+    ],",400 pass,
+TC16,,,,Use duplicate email,"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""sara test"",
+  ""email"": ""sara.test@test.com"",
+  ""password"": ""123456"",
+  ""avatar"": ""https://i.pravatar.cc/200""
+}
+",400 Bad Request: Should return “email already exists”,201 created,201,https://docs.google.com/document/d/1bB9Cg7YSmx0fZNx998YyWZl-_4asZeQh_tOju7dYqVo/edit?usp=sharing
+TC17,,,,Send empty avatar (“”),"""1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the """"Body"""" tab below the URL bar and select """"Raw"""".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""Admin User"",
+  ""email"": ""adminuser@test.com"",
+  ""password"": ""StrongPass123"",
+  ""avatar"": ""   "",
+ 
+}
+""","400 Bad Request – ""avatar is required""","message"": [
+        ""name should not be empty"",
+        ""avatar must be a URL address""
+    ],",400 fail,https://docs.google.com/document/d/1p7roeFkkh7Seu9JCTbhoxPBUlulyliwpirrvaXzmx2k/edit?usp=sharing
+TC18,,,,"Add ""role =custmer "" inside request body","1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""Admin User"",
+  ""email"": ""adminuser@test.com"",
+  ""password"": ""StrongPass123"",
+  ""avatar"": ""https://i.pravatar.cc/200"",
+  ""role"": ""custmer""
+}
+",201 created,201 created,201 pass,
+TC19,,,,"Add ""role =user"" inside request body","1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""Admin User"",
+  ""email"": ""adminuser@test.com"",
+  ""password"": ""StrongPass123"",
+  ""avatar"": ""https://i.pravatar.cc/200"",
+  ""role"": ""user""
+}
+","400 Bad Request – ""role must be admin or custmer ""","""message"": [
+        ""role must be one of the following values: admin, customer""
+    ],",400 pass,
+TC20,,,,without any role,"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""sara test"",
+  ""email"": ""sara.test@test.com"",
+  ""password"": ""123456"",
+  ""avatar"": ""https://i.pravatar.cc/200""
+}
+",201 created,201 created,201 pass,
+TC21,,,,Enter password with mixed characters (letters + symbols),"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""Symbol User"",
+  ""email"": ""symbolpass@test.com"",
+  ""password"": ""Test@123$!"",
+  ""avatar"": ""https://i.pravatar.cc/200""
+}
+","400 Bad Request – ""password must contain only letters and numbers""","""message"": [
+        ""password must contain only letters and numbers""
+    ],",400 pass,
+TC22,,,,Enter password with mixed characters (numbers + symbols),"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""Symbol User"",
+  ""email"": ""symbolpass@test.com"",
+  ""password"": ""Test0123gk"",
+  ""avatar"": ""https://i.pravatar.cc/200""
+}
+",201 created ,201 created ,201 pass,
+TC23,,,,Name Contains Numbers + Symbols,"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""User@123!!##"",
+  ""email"": ""invalidnamecase@test.com"",
+  ""password"": ""StrongPass123"",
+  ""avatar"": ""https://i.pravatar.cc/200""
+}
+","400 Bad Request
+
+""name must be alphabetic""
+
+",201 created,201 FAIL,https://docs.google.com/document/d/1HFJFMi4ZRHg2GTTm5vs94980h-snaBZI9WZ3jdKfzSU/edit?usp=sharing
+TC24,,,,Email Field Max Length,"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""Max Email Test"",
+  ""email"": ""thisisaverylongemailaddress_exceeding_standard_length_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@testdomainwithtoolongname123456789012345678901234567890.com"",
+  ""password"": ""Test1234"",
+  ""avatar"": ""https://i.pravatar.cc/200""
+}
+","400 Bad Request – """"email exceeds maximum allowed length""","""message"": [
+        ""email must be an email""
+    ],",400 pass,
+TC25,,,,Valid Email - Different Domains,"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""Max Email Test"",
+  ""email"": ""user@test.co.uk"",
+  ""password"": ""Test1234"",
+  ""avatar"": ""https://i.pravatar.cc/200""
+}",201 ceated,201 created,,
+TC26,,,,Password with Leading/Trailing Spaces,"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""Max Email Test"",
+  ""email"": ""user@test.co.uk"",
+  ""password"": ""  Test 1234"",
+  ""avatar"": ""https://i.pravatar.cc/200""
+}","400 Bad Request – ""password must contain only letters and numbers""""","""message"": [
+        ""password must contain only letters and numbers""
+    ],",400 pass,
+TC27,,,,Avatar - Non-Image URL,"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""Max Email Test"",
+  ""email"": ""user@test.co.uk"",
+  ""password"": ""  Test 1234"",
+  ""avatar"": ""https://www.google.com""
+}","400 Bad Request – ""avatar must be a valid image URL""",201 created,201 fail,https://docs.google.com/document/d/1o1JBdi9fj25-XevB4M4_cAOX6daKmp18Uqbt4A1F_TM/edit?usp=sharing
+TC28,,,,empty role ,"1. Open Postman and create a new POST request.
+2. Set Method to POST in the request.
+3. Choose POST from the dropdown menu next to the URL input field.
+4. Enter the Endpoint URL: https://api.escuelajs.co/api/v1/users
+5.Go to the ""Body"" tab below the URL bar and select ""Raw"".
+6.Enter the following JSON body in the Body section:
+{
+  ""name"": ""Admin User"",
+  ""email"": ""adminuser@test.com"",
+  ""password"": ""StrongPass123"",
+  ""avatar"": ""https://i.pravatar.cc/200"",
+  ""role"": """"
+}
+","400 Bad Request – ""role must be one of the following values: admin, customer"""," ""message"": [
+        ""role must be one of the following values: admin, customer""
+    ],",400 pass,
