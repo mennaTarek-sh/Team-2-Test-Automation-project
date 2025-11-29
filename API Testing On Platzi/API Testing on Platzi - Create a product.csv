@@ -1,0 +1,227 @@
+Id,API Name,EndPoints,Method,Test Steps,Expected result,Actual result,Status Code,Bug Report
+,Products,/Products,post,"1- Open Postman
+2- Set Method = POST
+3- Endpoint = /api/v1/products
+4- Body = valid JSON (title, price, description, categoryId, images)
+5 Click Send","Status Code = 201 Created
+Response JSON contains id, title, price, description, category, images, creationAt, updatedAt",As Expected,"201 Created
+(PASS)",
+,,,,"1-Open Postman
+2- Set Method = POST
+3- Endpoint = /api/v1/products
+4- Body missing title 
+5- Click Send","Status Code = 400 Bad Request 
+(or validation error)
+""Error message"" indicates missing fiel","""statusCode"": 500,
+""message"": ""Internal server error""","500 Internal Server Error
+(FAIL)",https://docs.google.com/document/d/1-ycLMXmEgeso8adOlCsOQM69W8kGU3qg1n8oWkxhjMI/edit?usp=sharing
+,,,,same steps but remove price,"
+""  ""statusCode"": 400
+ ""error"": ""Bad Request"",
+""message"": [
+        ""price should not be empty"",
+        ""price must be a positive number""
+    ]
+   
+  ",As Expected,"400 Bad Request
+(PASS)",
+,,,,remove description,"Status Code = 400 Bad Request 
+(or validation error)
+""Error message"" indicates missing fiel","""statusCode"": 500,
+  ""message"": ""Internal server error""","500 Internal Server Error
+(FAIL)",https://docs.google.com/document/d/1DNg8qDtnBIC-SmdlAlvhTeOT5jLzQIkc76438ArBLYY/edit?usp=sharing
+,,,,remove images," ""statusCode"": 400  
+""error"": ""Bad Request""
+ ""message"": ""Expected double-quoted property name in JSON at position 106"",
+    
+",AS Expected,"400 Bad Request
+(PASS)",
+,,,,"1- Open Postman
+2- Method = POST
+3- Endpoint = /products
+4- Body = ""price"": ""ten""
+5- Click Send"," ""statusCode"": 400
+""error"": ""Bad Request"",
+""message"": ""Unexpected token 'e', ...\""\""price\"": ten,\r\n  \""de\""... is not valid JSON""
+    
+   ",AS Expected,"400 Bad Request
+(PASS)",
+,,,,"1-Open Postman
+2- Method = POST
+3.-Endpoint = /products
+4- Body = ""price"": 0
+5- Click Send"," ""statusCode"": 400
+""error"": ""Bad Request"",
+""message"": [
+""price must be a positive number""
+    ]
+    
+    ",AS Expected,"400 Bad Request
+(PASS)",
+,,,,"1-Open Postman
+2- Method = POST
+3- Endpoint = /products
+4-Body = ""price"": -5
+5- Click Send"," ""statusCode"": 400
+""error"": ""Bad Request"",
+""message"": [
+""price must be a positive number""
+    ]
+    
+    ",AS Expected,"400 Bad Request
+(PASS)",
+,,,,"1- Open Postman
+2- Method = POST
+3- Endpoint = /products
+4- Body = ""price"": 12.75
+5- Click Send"," ""statusCode"": 201 Created
+A new resource was created successfully.",AS Expected,"201 Created
+(PASS)",
+,,,,"1-Open Postman
+2- Method = POST
+3- Endpoint = /products
+4- Body = ""title"": 12345
+5- Click Send","""statusCode"": 400 Bad Request"," ""statusCode"":201 Created
+A new resource was created successfull","201 Created
+(FAIL)",https://docs.google.com/document/d/1ti7IHXz77Lpq9TJ8RJOZslOGftz2lAgxlaFgmkaX8BI/edit?usp=sharing
+,,,,"1- Open Postman
+2- Method = POST
+3-Endpoint = /products
+4-Body = ""title"": ""A"".repeat(1000)
+5- Click Send","""statusCode"": 400 Bad Request"," ""statusCode"":201 Created
+A new resource was created successfull","201 Created
+(FAIL)",https://docs.google.com/document/d/1gu_Q2QCoUNQuQwU5ReL_0TUtL_i1phWfEv3wiqAC42k/edit?usp=sharing
+,,,,"1- Open Postman
+2- Method = POST
+3- Endpoint = /products
+4-Body = ""title"": ""!@#$%^&*()""
+5- Click Send","""statusCode"": 400 Bad Request"," ""statusCode"":201 Created
+A new resource was created successfull","201 Created
+(FAIL)",https://docs.google.com/document/d/1uC1IJtcgmOmlaChwyGRqi8dKVopdBmuFZNC6Wb2CfHY/edit?usp=sharing
+,,,,"1- Open Postman
+2- Method = POST
+3- Endpoint = /products
+4-Body = ""title"": "" ""
+5- Click Send","
+""statusCode"": 400  
+""error"": ""Bad Request"",
+  ""message"": [
+   ""title should not be empty""
+    ]
+    
+   ",AS Expected,"400 Bad Request
+(PASS)",
+,,,,"1-Open Postman
+2- Method = POST
+3- Endpoint = /products
+4- Body = ""description"": "" ""
+5- Click Send"," ""statusCode"": 400  
+""error"": ""Bad Request"",
+  ""message"": [
+ ""description should not be empty""
+    ]
+    
+ 
+",AS Expected,"400 Bad Request
+(PASS)",
+,,,,"1. Open Postman
+2. Method = POST
+3. Endpoint = /products
+4. Body = ""description"": 12345
+5. Click Send","""statusCode"": 400 Bad Request"," ""statusCode"":201 Created
+A new resource was created successfull","201 Created
+(FAIL)",https://docs.google.com/document/d/10CET68JFDiHEBce6NI5W5Dj2XxAclX5IhzvI00RIdSI/edit?usp=sharing
+,,,,"1. Open Postman
+2. Method = POST
+3. Endpoint = /products
+4. Body = ""description"": ""D"".repeat(2000)
+5. Click Send","""statusCode"": 400 Bad Request"," ""statusCode"":201 Created
+A new resource was created successfull","201 Created
+(FAIL)",https://docs.google.com/document/d/11m6rtJC6JqAcH6-ZDxfZJy9tvCOhYYioNX5vO-HSqls/edit?usp=sharing
+,,,,"1-Open Postman.
+2-Set method to POST.
+3-Enter URL: {{API_URL}}/api/v1/products.
+4-Go to Body → raw → JSON.
+5-Write valid categoryId: ""categoryId"": 44.
+6-Click Send.","""statusCode"": 201 Created 
+ product created",AS Expected,"201 Created
+(PASS)",
+,,,,"1-Set ""categoryId"": null.
+2-Send the request.
+","    ""statusCode"": 400
+ ""error"": ""Bad Request"",
+""message"": [
+    ""categoryId should not be empty"",
+     ""categoryId must be a number conforming to the specified constraints""
+    ]
+   
+",AS Expected,"400 Bad Request
+(PASS)",
+,,,,"1-Use ""categoryId"": ""44"".
+categoryId as string number
+2-Send request.
+",400 Bad Request," ""statusCode"":201 Created
+A new resource was created successfull","201 Created
+(FAIL)",https://docs.google.com/document/d/1y8E55ewV1qIsaofwFKoT_cIYsR6MjkT-a2TpWNppiso/edit?usp=sharing
+,,,,"1-Use ""categoryId"": ""abc"".
+ategoryId as non-numeric string
+2-Send reques"," ""statusCode"": 400
+""error"": ""Bad Request"",
+""message"": [
+        ""categoryId must be a number conforming to the specified constraints""
+    ]
+    
+   ",AS Expected,"400 Bad Request
+(PASS)",
+,,,," 1-Use ""categoryId"": ٤٤.
+categoryId using Arabic number
+2-Send the request.
+","""statusCode"": 400 Bad Request (Invalid JSON)",AS Expected,"400 Bad Request
+(PASS)",
+,,,,"1-Use ""categoryId"": 999999"".
+categoryId big number not exist
+2-Send","
+    ""path"": ""/api/v1/products/"",
+    ""timestamp"": ""2025-11-23T15:36:07.405Z"",
+    ""name"": ""EntityNotFoundError"",
+    ""message"": ""Could not find any entity of type \""Category\"" matching: {\n    \""id\"": 4\n}""",AS Expected,"400 Bad Request
+(PASS)",
+,,,,"1. Open Postman
+2. Method = POST
+3. Endpoint = /products
+4. Body = ""images"": ""https://placehold.co/600x400""
+5. Click Send","
+   ""statusCode"": 400
+ ""error"": ""Bad Request"",
+    ""message"": [
+        ""images must contain at least 1 elements"",
+        ""images must be an array""
+    ]",AS Expected,"400 Bad Request
+(PASS)",
+,,,,"1. Open Postman
+2. Method = POST
+3. Endpoint = /products
+4. Body = ""images"": []
+5. Click Send","    ""statusCode"": 400
+    ""error"": ""Bad Request"",
+ ""message"": [
+        ""images must contain at least 1 elements""
+    ]
+",AS Expected,"400 Bad Request
+(PASS)",
+,,,,"1. Open Postman
+2. Method = POST
+3. Endpoint = /products
+4. Body = ""images"": [""invalid_url""]
+5. Click Send",400 Bad Request," ""statusCode"":201 Created
+A new resource was created successfull","201 Created
+(FAIL)",https://docs.google.com/document/d/1ZaAa4wThnKygEQrKO0kyJWm7xwRDSC2z_ksmsOtGKjs/edit?usp=sharing
+,,,,"1. Open Postman
+2. Method = POST
+3. Endpoint = /products
+4. Body = valid JSON 
+Missing Header Content-Type:
+ application/json
+5. Click Send",Status Code = 415 Unsupported Media Type OR 400 Bad Request,"""statusCode"": 500,
+ ""message"": ""Internal server error""","500 Internal Server Error
+(FAIL)",https://docs.google.com/document/d/1OMdMKphH2tghWQ3gzo_n1IaLZSEyUaHTX6FQDwYHN7M/edit?usp=sharing
