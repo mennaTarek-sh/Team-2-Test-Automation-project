@@ -1,0 +1,52 @@
+Id,API Name,EndPoints,Method,Test Steps,Expected result,Actual result,Status Code,Bug Report
+,Products,/Products,GET,"1-Open Postman
+2-Set Method to GET
+3-Enter the endpoint URL
+4-Click Send
+5-Observe the response and status code","- Status 200 OK
+- List of products returns with correct fields",As Expected,"200 OK
+( PASS )",
+,,,POST,"1-Open Postman
+2- Set Method to POST
+3.-Enter endpoint /products
+4.-Click Send
+5.-Observe status code and error message","""statusCode"": 405 
+""message"":Method Not Allowed","""statusCode"": 500,
+""message"": ""Internal server error""","500 Internal Server Error
+(FAIL)",https://docs.google.com/document/d/1glHLQrX2LB2F0_9SNMmLCEdXM0V2hx64ldgxvWQ1dog/edit?usp=sharing
+,,,GET,"1- Open Postman
+2- Set Method to GET
+3- Enter wrong endpoint /product
+4- Click Send
+5- Observe status code and error message","""message"": ""Cannot GET /api/v1/product/"",
+""error"": ""Not Found"",
+""statusCode"": 404",As Expected,"404 Not Found
+(PASS)",
+,,,,"1- Open Postman
+2- Set Method GET
+3- Enter endpoint /products
+4- Click Send
+5-Verify each product in response has all required fields with correct type","Each product must have:
+- id (Number)
+- title (String)
+- slug (String)
+- price (Number)
+- description (String)
+- category (Object with id, name, slug, image, creationAt, updatedAt)
+- images (Array)
+- creationAt (Date)
+- updatedAt (Date)",As Expected,"200 OK
+(PASS)",
+,,,,"1- Open Postman
+2-Set Method GET
+3- Enter endpoint /products
+4- Click Send
+5- Observe response headers","- Access-Control-Allow-Origin = *
+- Content-Type = application/json; charset=utf-8
+- Strict-Transport-Security present
+- X-Content-Type-Options = nosniff
+- X-Frame-Options = SAMEORIGIN
+- Content-Security-Policy present
+- Cross-Origin-Opener-Policy = same-origin
+- Cross-Origin-Resource-Policy = same-origin",As Expected,"200 OK
+(PASS)",
