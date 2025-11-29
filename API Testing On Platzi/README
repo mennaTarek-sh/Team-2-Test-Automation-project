@@ -1,9 +1,10 @@
 FakeAPI REST API Testing Project
-____________________________________________________________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________________________________________________________________________________________
 📌 Project Overview
 
-This project is a comprehensive API testing suite for Fake Store API using Postman and structured Test Cases documentation. It covers key endpoints including Products, Categories, and Users, validating responses, error handling, input validations, and security checks like SQL Injection.
-___________________________________________________________________________________________________________________________________________________________
+This project is a comprehensive API testing suite for Fake Store API using Postman and structured Test Cases documentation. 
+It covers key endpoints including Products, Categories, and Users, validating responses, error handling, input validations, and security checks like SQL Injection.
+______________________________________________________________________________________________________________________________________________________________________________________________
 🔹 Modules Description
 Products Module
 
@@ -38,7 +39,7 @@ Ensures the API properly validates inputs (numeric fields, URLs, mandatory field
 Tests for SQL Injection and malformed requests.
 
 Confirms behavior when headers or body content are unexpected or missing.
-___________________________________________________________________________________________________________________________________________________
+____________________________________________________________________________________________________________________________________________________________________________________________
  Dependencies
 
 Postman for API testing.
@@ -48,9 +49,9 @@ JSON for request and response bodies.
 Optional: Newman for running tests via CLI.
 
 Documentation maintained in Google Sheets 
-
+Link to Google Sheet is also included in repo description
 https://docs.google.com/spreadsheets/d/1wGYPi54EtUoPD_PKVqJp3j21xDfOaAiNIHG_l8AeUI8/edit?usp=sharing
-___________________________________________________________________________________________________________________________________________
+_____________________________________________________________________________________________________________________________________________________________________________________________
 Notes
 
 Each test case documents:
