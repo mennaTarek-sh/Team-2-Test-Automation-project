@@ -1,0 +1,48 @@
+Id,API Name,EndPoints,Method,Test Steps,Expected result,Actual result,Status Code,Bug Report
+,Products,/products/?title=Sweatpants,GET,"1. Open Postman
+2. Method = GET
+3. URL = /products/?title=Sweatpants
+4. Click Send","200 OK 
+returns list with matching products",As Expected,"200 Ok
+(PASS)",
+,,/products/?title=UnknownXYZ,,"1. Open Postman
+2. Method = GET
+3. URL = /products/?title=UnknownXYZ
+4. Click Send","200 OK 
+ returns empty array []",As Expected,"200 Ok
+(PASS)",
+,,/products/?title=,,Send request without value,"200 OK 
+returns all products",As Expected,"200 Ok
+(PASS)",
+,,/products/?title=12345,,Send numeric string,"200 OK 
+ returns empty array []",As Expected,"200 Ok
+(PASS)",
+,,/products/?title=!@#,,Send request with symbols,"200 OK 
+ returns empty array []",As Expected,"200 Ok
+(PASS)",
+,,"/products/?title=(""A""*300)",,Send long string,"200 OK 
+ returns empty array []",As Expected,"200 Ok
+(PASS)",
+,,/products/?title=Sweatpants';DROP TABLE products;--,,Send injection-like value,"200 OK 
+ returns empty array []",As Expected,"200 Ok
+(PASS)",
+,,"/products/?titles=Sweatpants
+
+(Misspell param name)",,"1. Open Postman
+2. Method = GET
+3. URL = /products/?titles=Sweatpants
+4. Click Send","200 OK 
+ returns all products (filter ignored)",As Expected,"200 Ok
+(PASS)",
+,,/products/?title=Sweatpants,POST,Use POST instead of GET,"""statusCode"": 405 
+""message"":Method Not Allowed"," ""statusCode"": 500,
+    ""message"": ""Internal server error""","500 Internal Server Error
+(FAIL)",https://docs.google.com/document/d/1xB5FKA50CjTGnx0J3aKu71IatQW9ZM1_JqkVQiAOXy0/edit?usp=sharing
+,,/products/?title=Sweatpants,GET,Send GET with header Content-Type: text/plain,200 OK – GET does not use body and ignores Content-Type,As Expected,"200 Ok 
+(PASS)",
+,,/products/?title=Sweatpants,,"1. Open Postman
+2. Method = GET
+3. URL = /products/?title=Sweatpants
+Body: { ""title"":""x"" }
+4. Click Send", 200 OK – body ignored,As Expected,"200 Ok 
+(PASS)",
