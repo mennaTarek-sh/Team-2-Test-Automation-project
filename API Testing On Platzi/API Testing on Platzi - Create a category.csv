@@ -1,0 +1,54 @@
+Id,API Name,EndPoints,Method,Test Steps,Expected result,Actual result,Status Code,Bug Report
+,Categories,/categories/,POST,"1. Open Postman
+2. Method = POST
+3. URL → /categories/
+4. Body → raw → JSON:
+{ ""name"": ""Electronics"", ""image"": ""https://i.imgur.com/example.jpg"" }
+5. Click Send","201 Created, response 
+Contains new data(id, name, image, creationAt, updatedAt",As Expected,"201 Created
+(PASS)",
+,,,,"Body missing name:
+{ ""image"": ""https://i.imgur.com/example.jpg"" }","400 Bad Request – ""name is required""","
+ ""statusCode"": 500,
+ ""message"": ""Internal server error""","500 Internal Server Error
+(FAIL)",https://docs.google.com/document/d/1JHcxuHS3i_grq58SVc4qlx1ubdeYW6YE7W5tcrXlUzs/edit?usp=sharing
+,,,,"Body with empty name:
+{ ""name"": """", ""image"": ""https://i.imgur.com/example.jpg"" }"," ""statusCode"": 400
+ ""error"": ""Bad Request"",
+ ""message"": [
+        ""name should not be empty""
+    ]
+   
+    ",As Expected,"400 Bad Request
+(PASS)",
+,,,,"Body missing image:
+{ ""name"": ""Electronics"" }","
+  ""statusCode"": 400  
+  ""error"": ""Bad Request"", 
+ ""message"": [
+       ""image should not be empty"",
+       ""image must be a URL address""
+    ]
+  
+  ",As Expected,"400 Bad Request
+(PASS)",
+,,,,"Invalid image URL:
+{ ""name"": ""Electronics"", ""image"": ""invalid_url"" }","400 Bad Request – ""image must be a valid URL""",201 Created,"201 Created
+(FAIL)",https://docs.google.com/document/d/1u3FSSGWW7uGyEZ3VUhUbbnuUsRaIQuBHHct57BQvVyc/edit?usp=sharing
+,,,,"Duplicate category name:
+{ ""name"": ""Electronics"", ""image"": ""https://i.imgur.com/example.jpg"" }","409 Conflict – ""Category already exists""","400 Bad Request
+ ""message"": ""SqliteError: UNIQUE constraint failed: category.slug"",","400 Bad Request
+(FAIL)",https://docs.google.com/document/d/1JwlKv4kegaTlhWKWao-uKTaCtDof81nIA_Q2cah4iQo/edit?usp=sharing
+,,,,"Body with extra fields:
+{ ""name"": ""Electronics"", ""image"": ""https://i.imgur.com/example.jpg"", ""role"": ""admin"" }",201 Created – extra fields ignored,"400 Bad Request
+ ""message"": ""SqliteError: UNIQUE constraint failed: category.slug"",","400 Bad Request
+(FAIL)",https://docs.google.com/document/d/1HTQVVYo3PhwhqIp2qgbAJjCiCUQ8mJ39BKu14uSXd08/edit?usp=sharing
+,,,,"Wrong Content-Type:
+Header Content-Type = text/plaiin",415 Unsupported Media Type OR  400 Bad Request,500 Internal Server Error,"500 Internal Server Error
+(FAIL)",https://docs.google.com/document/d/1h_hRPf-SstM_E21HMCiq-1HynSNxi1KgLrDYfh3og-U/edit?usp=sharing
+,,,,"Very long name (boundary testing):
+{ ""name"": ""E"".repeat(300), ""image"": ""https://i.imgur.com/example.jpg"" }",400 Bad Request – validation error,201 Created,"201 Created
+(FAIL)",https://docs.google.com/document/d/1USoVyysOgC95XvEXmNbfsJfO1b9IVzPHB6w6DpeeaQk/edit?usp=sharing
+,,,,"SQL Injection attempt:
+{ ""name"": ""Electronics'; DROP TABLE categories;--"", ""image"": ""https://i.imgur.com/example.jpg"" }",400 Bad Request,201 Created,"201 Created
+(FAIL)",https://docs.google.com/document/d/1wc0TYAXbr0cVjHjwZQNdbKkFhQe2f2ygW7LAWnl21Sw/edit?usp=sharing
