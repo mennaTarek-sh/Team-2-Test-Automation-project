@@ -1,0 +1,38 @@
+Id,API Name,EndPoints,Method,Test Steps,Expected result,Actual result,Status Code,Bug Report
+,Categories,/categories/{{id}},DELETE,"1. Open Postman
+2. Method = DELETE
+3. URL = /categories/{{id}}
+4. Click Send","200 OK
+Response: true",As expected,"200 OK
+(PASS)",
+,,DELETE /categories/99,,Delete non-existing ID,"404 Not Found
+""Category not found""","400 Bad Request
+ ""message"": ""Could not find any entity of type ","400 Bad Request
+(FAIL)",https://docs.google.com/document/d/1YIiOse6NpFQhru2t-Qyq26sUK-EFX2lHkua3PNqnZEg/edit?usp=sharing
+,,DELETE /categories/abc,,id = string not number,"""statusCode"": 400
+""error"": ""Bad Request"",
+""message"": ""Validation failed (numeric string is expected)""",As expected,"400 Bad Request
+(PASS)",
+,,DELETE /categories/!@#$%,,id contains symbols,"    ""statusCode"": 400
+    ""error"": ""Bad Request"",
+""message"": ""Validation failed (numeric string is expected)""",As expected,"400 Bad Request
+(PASS)",
+,,DELETE /categories/,,missing id,"""statusCode"": 404
+ ""error"": ""Not Found"",
+""message"": ""Cannot DELETE /api/v1/categories/""
+
+
+",As expected,"404 Not Found
+(PASS)",
+,,DELETE /categories/-34,,Negative ID,400 Bad Request,As expected,"400 Bad Request
+(PASS)",
+,,DELETE /categories/12345679,,Very long ID (boundary),400 Bad Request,As expected,"400 Bad Request
+(PASS)",
+,,DELETE with Body,,"Add JSON body even though not needed
+
+(To ensure the API is robust
+ and that it won't crash or exhibit unexpected behavior if the user sends an unsolicited object)","""StatusCode"": 400 Bad Request 
+""message"": ""SqliteError: FOREIGN KEY constraint failed"",",As expected,"400 Bad Request
+(PASS)",
+,,DELETE with wrong Content-Type,,Set header Content-Type = text/plain,400 Bad Request,As expected,"400 Bad Request
+(PASS)",
