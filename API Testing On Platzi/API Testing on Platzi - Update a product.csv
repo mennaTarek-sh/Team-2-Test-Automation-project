@@ -1,0 +1,74 @@
+Id,API Name,EndPoints,Method,Test Steps,Expected result,Actual result,Status Code,Bug Report
+,Products,/products/{id},put,"1. Open Postman → PUT /api/v1/products/241
+2. Set Body → raw → JSON
+3. Enter full valid JSON
+4. Click Send","""Status Code"": 200 OK 
+ Product updated 
+Updated fields appear in response",As Expected,"200 OK
+(PASS)",
+,,,,"1. Open Postman → PUT /api/v1/products/247
+2. Set Body → raw → JSON without title
+3. Click Send","Status 400 Bad Request
+Error message : title required"," ""statusCode"":200 Ok
+Request successful. The server has responded as required.","200 OK
+(FAIL)",https://docs.google.com/document/d/1Dd3rh2eNFOzs8uCyPfkj2LQ7Ih-Xzd_FatlPkbz4cGw/edit?usp=sharing
+,,,,"1. Open Postman → PUT /api/v1/products/1
+2. Set Body → raw → JSON without price
+3. Click Send","Status 400 Bad Request
+Error message : title required"," ""statusCode"":200 Ok
+Request successful. The server has responded as required.","200 OK
+(FAIL)",https://docs.google.com/document/d/1NH4iygh8Og6BIuunQc55xIMraJJ1LSOZ3dZ_VYMxttk/edit?usp=sharing
+,,,,"1. Open Postman → PUT /api/v1/products/1
+2. Set Body → raw → JSON with invalid price
+3. Click Send","  ""statusCode"": 400
+""error"": ""Bad Request"",
+ ""message"": [
+        ""price must be a positive number""
+    ]
+    
+   ",As Expected,"400 Bad Request
+(PASS)",
+,,,,"1. Open Postman → PUT /api/v1/products/
+2. Set Body → raw → valid JSON
+without Id
+3. Click Send","""statusCode"": 404
+  ""error"": ""Not Found"",
+""message"": ""Cannot PUT /api/v1/products/""
+  
+  Explanation: The endpoint is not found because the ID is missing in the URL.",As Expected,"404 Not Found
+(PASS)",
+,,,,"1. Open Postman → PUT /api/v1/products/246
+2. Set Body → raw → JSON without categoryId
+3. Click Send","Status 400 Bad Request
+Error message :categoryId required"," ""statusCode"":200 OK
+Request successful. The server has responded as required.","200 OK
+(FAIL)",https://docs.google.com/document/d/1Ni20w5ji6ckYQK0g1dNLK-PVh2yNEoz3wru4tFJbc6U/edit?usp=sharing
+,,,,"1. Open Postman → PUT /api/v1/products/286
+2. Set Body → raw → JSON with invalid categoryId
+3. Click Send","Status 400 Bad Request
+Error message: ""Category not found"""," ""statusCode"":200 OK
+Request successful. The server has responded as required.","200 OK
+(FAIL)",https://docs.google.com/document/d/1d75duL-whHvTe33B221FtIX8VgAeRLCivv6PVve9QeY/edit?usp=sharing
+,,,,"1. Open Postman → PUT /api/v1/products/9999
+2. Set Body → raw → JSON with invalid Id
+3. Click Send","Status Code :400 Bad Request
+ ""message"": Could not find any entity of type \Product/",As Expected,"400 Bad Request
+(PASS)",
+,,,,"1. Open Postman → PUT /api/v1/products/90
+2. Set Body → raw → JSON with Invalid image URL
+3. Click Send",400 Bad Request," ""statusCode"":200 OK
+Request successful. The server has responded as required.","200 OK
+(FAIL)",https://docs.google.com/document/d/1DQyCEbUgD6OfpP2j0F2YuACTo_4C7I5IYvY4-1STmTo/edit?usp=sharing
+,,,,"1. Open Postman → PUT /api/v1/products/90
+2. Set Body → raw → JSON 
+Update only one field(title)
+3. Click Send","400 Bad Request
+Message: ""Missing required fields"," ""statusCode"": 500,
+""message"": ""Internal server error""","500 Internal Server Error
+(FAIL)",https://docs.google.com/document/d/1k26OppZCl-ucJHhPYpWk2ZqiVhWbRz8Qm4xbawAaMQI/edit?usp=sharing
+,,,,"1. Open Postman → PUT /api/v1/products/90
+2. Set Body → raw → JSON 
+with body = empty
+3. Click Send",400 Bad Request,"""statusCode"": 500,
+""message"": ""Internal server error""","500 Internal Server Error
+(FAIL)",https://docs.google.com/document/d/1t0MbflxPpaQ834xBcpuFKdu2PWYGb5VkLipjeXIIIQs/edit?usp=sharing
