@@ -1,0 +1,41 @@
+Id,API Name,EndPoints,Method,Test Steps,Expected result,Actual result,Status Code,Bug Report
+,Products,/products/?categoryId=164,GET,"1. Open Postman
+2. Method = GET
+3. URL → /products/?categoryId=164
+4. Click Send",200 OK – returns list of products with category ID = 164,As Expected,"200 Ok
+(PASS)",
+,,/products/?categoryId=9999,,Category ID does not exist,200 OK – returns empty array [],As Expected,"200 Ok
+(PASS)",
+,,/products/?categoryId=abc,,Non-numeric category ID,"""statusCode"": 400
+ ""error"": ""Bad Request"",
+""message"": [
+        ""categoryId must be a number conforming to the specified constraints""
+    ]
+   
+    ",As Expected,"400 Bad Request
+(PASS)",
+,,/products/?categoryId=-5,,Negative category ID,400 Bad Request – invalid value,"200 Ok
+ returns empty array []
+","200 Ok
+(FAIL)",https://docs.google.com/document/d/125FtKU0dZ7rSnGSfFaddnGk6s_DcR1BbvLM5ihr0uBg/edit?usp=sharing
+,,/products/?categoryId=164,POST,"1. Open Postman
+2. Method =POST
+3. URL → /products/?categoryId=164
+4. Click Send",405 Method Not Allowed,"""statusCode"": 500,
+    ""message"": ""Internal server error""","500 Internal Server Error
+(FAIL)",https://docs.google.com/document/d/1wL3-4ngsq__ew0quRhCQAEAwl9hAltjZFytsR4TpvP4/edit?usp=sharing
+,,/products/?categoryId=165,GET,Content-Type: text/plain,"200 OK 
+ ignored Content-Type",As Expected,"200 Ok 
+(PASS)",
+,,/products/?categoryId=166,,"1. Open Postman
+2. Method = GET
+3. URL → /products/?categoryId=164
+Add extra body JSON
+4. Click Send",200 OK – body ignored,As Expected,"200 Ok 
+(PASS)",
+,,/products/?categorId=164,,"1. Open Postman
+2. Method = GET
+3. URL → /products/?categorId=164
+4. Click Send","200 OK 
+ returns all products (filter ignored)",As Expected,"200 Ok 
+(PASS)",
