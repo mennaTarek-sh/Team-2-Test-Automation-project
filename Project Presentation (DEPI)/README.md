@@ -7,9 +7,13 @@ ________________________________________________________________________________
 🎯 Project Goal
 
 The main goal of this project is to validate the web application from all aspects:
+
 UI & User Experience
+
 Backend Logic
+
 Regression Stability
+
 Instead of testing from a single angle, we ensured complete coverage using multiple testing approaches.
 __________________________________________________________________________________________________________________________________________________________________________________________
  Testing Types Used
@@ -46,8 +50,11 @@ ________________________________________________________________________________
 📂 Documentation & Evidence
 
 Manual Test Cases: Google Sheets
+
 Automation Scripts: Selenium Project
+
 API Tests: API Collections
+
 All links and evidence are available in the repository and shared folders.
 _______________________________________________________________________________________________________________________________________________________________________________________
  Conclusion
