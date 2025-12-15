@@ -29,9 +29,13 @@ ________________________________________________________________________________
 🌐 Different Testing Environments
 
 Each testing type was applied on a different web application:
+
 Manual Testing → DemoBlaze
+
 Automation Testing → SauceDemo
+
 API Testing → Platzi Fake Store API
+
 This approach proves that the testing framework is flexible and applicable to any web application, not limited to a single demo.
 ___________________________________________________________________________________________________________________________________________________________________________________________
  Team Collaboration
